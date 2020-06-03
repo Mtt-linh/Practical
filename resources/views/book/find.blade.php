@@ -5,32 +5,22 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="product-status-wrap">
-                        <h4>Book list</h4>
-                        <form  role="form" action="{{url("/find-book")}}" method="POST"  >
-                            @method("POST")
-                            @csrf
-                            <div class="form-group" style="width: 30%">
-                                <label for="book">Email address</label>
-                                <input type="text" name="title" class="form-control" id="book" placeholder="Search....">
-                                <button class="btn btn-dark">Search</button>
-                            </div>
-                        </form>
+                        <h4>Book search</h4>
                         <div class="add-product">
-                            <a href="#">Add book</a>
+                            <a href="#">seach book</a>
                         </div>
                         <div class="asset-inner">
                             <table>
                                 <tr>
                                     <th>ID</th>
                                     <th>author id</th>
-                                    <th>title</th>
+                                    <th>Title</th>
                                     <th>ISBN</th>
                                     <th>pub year</th>
                                     <th>available</th>
                                     <th></th>
                                 </tr>
 
-                                @foreach($books as $book)
                                     <tr>
                                         <td>{{$book->__get("id")}}</td>
                                         <td>{{$book->__get("author_id")}}</td>
@@ -38,19 +28,8 @@
                                         <td>{{$book->__get("ISBN")}}</td>
                                         <td>{{$book->__get("pub_year")}}</td>
                                         <td>{{$book->__get("available")}}</td>
-                                        <td>
-                                            <a href="{{url("edit-book/{$book->__get("id")}")}}" class="btn btn-outline-warning">Edit</a>
-                                            <form action="{{url("delete-book/{$book->__get("id")}")}}" method="post">
-                                                @method("DELETE")
-                                                @csrf
-                                                <button  type="submit" onclick="return confirm('Are you sure?');" class="btn btn-outline-danger">Delete</button>
-                                            </form>
-                                        <td>
 
-                                        </td>
-                                        </td>
                                     </tr>
-                                @endforeach
                             </table>
                         </div>
                         <div class="custom-pagination">
@@ -68,4 +47,4 @@
         </div>
     </div>
 
-    @endsection
+@endsection

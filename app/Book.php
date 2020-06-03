@@ -14,6 +14,8 @@ class Book extends Model
         "available",
     ];
     public function Author(){
-        return $this->belongsTo("\App\Author","author_id");// tra ve 1 object
+        return $this->belongsTo("\App\Author","author_id");
     }
+
+
 }

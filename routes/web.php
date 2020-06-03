@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::get('/','HomeController@home');
 Route::get("/list-book","HomeController@listBook");
+Route::get("/find-book","HomeController@findBook");
