@@ -6,35 +6,56 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
+    <title>The Feedback</title>
 </head>
 <body>
 <div class="container">
     <h1>The survey</h1>
-    <form>
+    <form action="{{url("/save-information")}}" method="post">
+        @method("POST")
+        @csrf
         <div class="form-group">
-            <label for="exampleInputName1">Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+            <label>Name</label>
+            <input class="form-control @error("student_name") is-invalid @enderror" type="text" name="student_name" placeholder="Enter Name"/>
+            @error("student_name")
+            <span class="error invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <label>Email</label>
+            <input name="student_email" type="email" placeholder="Enter your email.." class="form-control @error("student_email") is-invalid @enderror"/>
+            @error("student_email")
+            <span class="error invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
         <div class="form-group">
-            <label for="exampleInputPhone1">Phone</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter phone">
+            <label>Phone</label>
+            <input name="phone" type="text" placeholder="phone number" class="form-control @error("phone") is-invalid @enderror"/>
+            @error("phone")
+            <span class="error invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
         <div class="form-group">
-            <label for="exampleInputDesc">Feedback</label>
-            <input type="text" class="form-control" placeholder="Feedback">
-        </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <label>Feedback</label>
+            <textarea name="feedback" type="text" placeholder="feedback.." class="form-control @error("feedback") is-invalid @enderror">
+</textarea>
+            @error("feedback")
+            <span class="error invalid-feedback">{{$message}}</span>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<script type="text/javascript">
+    function feedback() {
+        $.ajax({
+            url:"{{url("/save-feedback")}}",
+            method:"POST",
+            success: function () {
+                alert("thank for your feedback!");
+            }
+        });
+    }
+</script>
 </body>
 </html>

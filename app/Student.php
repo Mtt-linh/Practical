@@ -6,8 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $table = "information";
+    protected $table = "infomation";
     public $fillable = [
-        "student_name"
+        "student_name",
+        "student_email",
+        "phone",
+        "feedback"
     ];
 }

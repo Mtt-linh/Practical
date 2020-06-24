@@ -22,3 +22,5 @@ Route::get("/find-book","HomeController@findBook");
 ////////////////////////////////////////////////////////
 /// DW
 Route::get("/information","HomeController@Information");
+Route::post("/save-information","HomeController@SaveInformation");
+Route::get("/home-school","HomeController@homeSchool");

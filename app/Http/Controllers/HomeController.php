@@ -49,11 +49,14 @@ class HomeController extends Controller
                 "feedback" => $request->get("feedback"),
 
             ]);
-            $data["message"] = "Bạn đã gửi feedback thành công  " . $request->get("student_name");
-            notify("global", "new", $data);
+//            $data["message"] = "Bạn đã gửi feedback thành công  " . $request->get("student_name");
+//            notify("global", "new", $data);
         } catch (\Exception $exception) {
-
+            return redirect()->back();
         }
-        return view("/");
+        return view("school.home");
+    }
+    public  function homeSchool(){
+        return view("School.home");
     }
 }
